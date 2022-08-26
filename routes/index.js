@@ -13,6 +13,12 @@ router.get("/json", function (req, res, next) {
     let json = JSON.parse(data);
     res.json(json);
   });
+  // var graph = {};
+  // int number = req.query.number;
+});
+
+router.get("/graph", function (req, res, next){
+  res.render("graph");
 });
 
 module.exports = router;

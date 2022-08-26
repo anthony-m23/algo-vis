@@ -16,6 +16,12 @@
       <input type="text" name="number" id="number">
       <input type="submit" onclick="getUrlParameter()">
     </div>
-    <!-- <div id="my_network"></div> -->
+    <div id="my_network"></div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search)
+        getGraph(params.get("number"));
+    </script>
+
   </body>
 </html>
