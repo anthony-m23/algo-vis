@@ -13,9 +13,10 @@ function getGraph(number) {
     };
     var network = new vis.Network(container, data, options);
   });
-}
+} 
 
-function getUrlParameter() {
+// TODO: rename function to nextPage() or something along those lines
+function generateGraph() {
   var number = document.getElementById("number").value;
   if (Number.isInteger(parseInt(number))) {
     window.location.href = "/graph?number=" + number;
