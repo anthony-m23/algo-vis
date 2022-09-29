@@ -50,21 +50,22 @@ function getEdges(nodes, number) {
   var edges = [];
   var rand;
   var max = Math.floor(number * 0.5) + number;
-  let amountOfEdges = Math.floor(Math.random() * (max - number + 1) + number);
+  let amountOfEdges = Math.floor(Math.random() * (max - number) + number);
   console.log(amountOfEdges);
-  // TODO: if you always want connected make initial graph i<number boring connect all
   for (var i = 0; i < amountOfEdges; i++) {
-    if (i < number) {
+    if (i < number-1) {
       rand = getRandom(number, i);
-      edges[i] = {
+      edges[i] = { // make sure we do not have multiple separate graphs so connect all nodes initially
         from: i,
-        to: rand
+        to: i+1
       };
     }
-    else{
+    else{ // randomly generate edges between nodes without having node point to itself
+      let from = Math.floor(Math.random() * number)
+      let to = getRandom(number, from);
       edges[i] = {
-        from: Math.floor(Math.random() * number),
-        to: Math.floor(Math.random() * number)
+        from: from,
+        to: to
       };
     }
   }

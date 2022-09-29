@@ -8,7 +8,17 @@ function getGraph(number) {
     var container = document.getElementById("my_network");
     var options = {
       configure:{
-        enabled: false
+        enabled: true,
+      },
+      "nodes": {
+        "shape": "circle",
+      },
+      "edges": {
+        "arrows": {
+          "to": {
+            "enabled": true
+          }
+        }
       }
     };
     var network = new vis.Network(container, data, options);
