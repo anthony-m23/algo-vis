@@ -22,11 +22,7 @@
 - index.js
 - This api takes in the amount of nodes to be generated and creates json that will be consumed by the front end
 - It randomly generates edges between each node, so each graph is different and can be more complex than others
-
-### /dfs
-
-- This will take in the graph created by /json and will then return json that contains the moves needed for dfs
-- Helps the front end know which node should be colored as current
+- Also adds the steps needed for dfs visualization
 
 
 ## Architecture
