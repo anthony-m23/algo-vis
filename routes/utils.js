@@ -47,3 +47,4 @@ function getNodes(number) {
 
   
   module.exports = {getNodes, getEdges, getRandom};
+  
