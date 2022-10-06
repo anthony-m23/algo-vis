@@ -10,14 +10,19 @@ function getGraph(number) {
       configure:{
         enabled: true,
       },
-      "nodes": {
-        "shape": "circle",
+      nodes: {
+        shape: "circle",
       },
-      "edges": {
-        "arrows": {
-          "to": {
-            "enabled": true
+      edges: {
+        arrows: {
+          to: {
+            enabled: true
           }
+        }
+      },
+      physics: {
+        barnesHut: {
+          avoidOverlap: 0.7
         }
       }
     };

@@ -1,10 +1,11 @@
 // generates the nodes based on how many user wants
 function getNodes(number) {
-    var nodes = [];
-    for (var i = 0; i < number; i++) {
+    let nodes = [];
+    for (let i = 0; i < number; i++) {
       nodes[i] = {
         id: i,
-        label: "node " + i
+        label: "node " + i,
+        group: "NULL"
       };
     }
     return nodes;
@@ -12,12 +13,12 @@ function getNodes(number) {
   
   // randomly generates the edges/relationships between nodes
   function getEdges(nodes, number) {
-    var edges = [];
-    var rand;
-    var max = Math.floor(number * 0.5) + number;
+    let edges = [];
+    let rand;
+    let max = Math.floor(number * 0.5) + number;
     let amountOfEdges = Math.floor(Math.random() * (max - number) + number);
     console.log(amountOfEdges);
-    for (var i = 0; i < amountOfEdges; i++) {
+    for (let i = 0; i < amountOfEdges; i++) {
       if (i < number-1) {
         rand = getRandom(number, i);
         edges[i] = { // make sure we do not have multiple separate graphs so connect all nodes initially
@@ -40,11 +41,37 @@ function getNodes(number) {
   
   // gets a random integer that is not equal to the current node (i) and between 0-number
   function getRandom(number, i) {
-    var rand = Math.floor(Math.random() * number);
+    let rand = Math.floor(Math.random() * number);
     while (rand == i) rand = Math.floor(Math.random() * number);
     return rand;
   }
 
+  function getDfs(nodes, edges) {
+    let stack = [];
+    let set = new Set();
+    let dfs = [];
+    let i = 0;
+    stack.push(nodes[0].id);
+    
+    while(stack.length > 0){
+      let curr = stack.pop();
+      set.add(curr);
+
+      dfs[i] = {
+        id: curr
+      };
+
+      for(const edge of edges){
+        if(edge.from == curr && !set.has(edge.to)){
+          stack.push(edge.to);
+          set.add(edge.to);
+        }
+      }
+      i++; 
+    }
+    return dfs;
+  }
+
   
-  module.exports = {getNodes, getEdges, getRandom};
+  module.exports = {getNodes, getEdges, getRandom, getDfs};
   

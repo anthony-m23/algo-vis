@@ -13,10 +13,13 @@ router.get("/json", function (req, res, next) {
   var number = parseInt(req.query.number);
   var nodes = utils.getNodes(number);
   var edges = utils.getEdges(nodes, number);
+  var dfs = utils.getDfs(nodes, edges);
   var graph = {
     nodes: nodes,
-    edges: edges
+    edges: edges,
+    dfs: dfs
   };
+  console.log(graph);
   res.json(graph);
 });
 
